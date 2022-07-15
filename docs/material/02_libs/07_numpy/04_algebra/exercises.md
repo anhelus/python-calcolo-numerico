@@ -33,7 +33,7 @@ def calcola_determinante(mat):
 
 ## Esercizio E7.4.3
 
-Scriviamo la funzione `inverti_se_inveribile(mat)` che, data una matrice bidimensionale, restituisca l'inversa soltanto se `mat` è bidimensionale e quadrata, ed il determinante è diverso da zero. Usare esclusivamente le istruzioni `if`.
+Scriviamo la funzione `inverti_se_invertibile(mat)` che, data una matrice bidimensionale, restituisca l'inversa soltanto se `mat` è bidimensionale, quadrata, e il determinante sia diverso da zero. Usare esclusivamente le istruzioni `if`.
 
 ### Soluzione S7.4.3
 

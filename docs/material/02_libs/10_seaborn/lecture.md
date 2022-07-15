@@ -31,7 +31,8 @@ tips = load_dataset('tips')
 
 Ispezionando il tipo di `tips` possiamo scoprire che si tratta di un dataframe; di conseguenza, possiamo esplorarne liberamente la struttura utilizzando Pandas. In particolare, vediamo che questi sono organizzati secondo la seguente tabella:
 
-```sh
+```py
+>>> tips.head()
   total_bill   tip     sex smoker  day    time  size
 0       16.99  1.01  Female     No  Sun  Dinner     2
 1       10.34  1.66    Male     No  Sun  Dinner     3
@@ -145,6 +146,6 @@ sns.heatmap(
     yticklabels=False)
 ```
 
-Nella precedente invocazione della funzione `heatmap()` specifichiamo i parametri indicati in modo da passare un array (o similari) come primo argomento, seguito da una *colormap*, ovvero i colori da utilizzare. Specifichiamo inoltre che vogliamo inserire i valori dell'array su ciascuna delle celle dell'heatmap (mediante il parametro `annot`) e che non vogliamo visualizzare i label sugli assi X ed Y (`xticklabels` ed `yticklabels` rispettivamente). Otterremo questo risultato:
+Nella precedente invocazione della funzione `heatmap()` specifichiamo i parametri indicati in modo da passare un array (o similari) come primo argomento, seguito da una *colormap*, ovvero i colori da utilizzare. Specifichiamo inoltre che vogliamo inserire i valori dell'array su ciascuna delle celle dell'heatmap (mediante il parametro `annot`) e che non vogliamo visualizzare i label sugli assi $x$ e $y$ (`xticklabels` ed `yticklabels` rispettivamente). Otterremo questo risultato:
 
 ![heatmap](./images/heatmap.png){: .center}

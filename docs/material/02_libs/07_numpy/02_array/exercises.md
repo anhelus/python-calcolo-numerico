@@ -37,8 +37,15 @@ res = riga_per_colonna(np.array([[1]]), v2)
 
 L'equivalente operazione in NumPy è data da:
 
+<!--
+teoricamente
+```python
+res = np.dot(v1, v2) # oppure np.multiply(v1, v2)
+```
+-->
+
 ```py
-res = v1 * v2
+res = np.dot(v1, v2)
 ```
 
 ## Esercizio E7.2.2

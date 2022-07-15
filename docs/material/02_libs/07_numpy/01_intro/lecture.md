@@ -1,6 +1,6 @@
 # 7.1 Introduzione a NumPy
 
-La libreria **NumPy**, nome derivante dalla crasi tra *Num*erical *Py*thon, è una tra le più utilizzate nelle applicazioni di calcolo scientifico in Python.
+La libreria **NumPy**, nome derivante dalla crasi tra <em>Num</em>erical <em>Py</em>thon, è una tra le più utilizzate nelle applicazioni di calcolo scientifico in Python.
 
 Nella pratica, possiamo pensare a NumPy come ad uno standard *de facto*: infatti, le classi ed i metodi messi a disposizione dalla libreria sono estensivamente utilizzate nella quasi totalità degli altri tool Python per le scienze matematiche, chimiche e fisiche, oltre che per l'ingegneria.
 
@@ -34,7 +34,7 @@ Una volta importato NumPy, potremo passare ad utilizzare la struttura dati "prin
 Nello specifico, NumPy ci mette a disposizione gli `ndarray`, ovvero delle strutture dati in grado di rappresentare array ad $n$ dimensioni, contenenti dati di tipo *omogeneo*.
 
 !!!tip "Nota"
-    Anche `ndarray` è un'abbreviazione che sta per *n*-*d*imensional *array*. 
+    Anche `ndarray` è un'abbreviazione che sta per <em>n-d</em>imensional *array*.
 
 Il metodo più semplice per creare un array è usare il costruttore `array` a cui viene passata una lista:
 
@@ -75,8 +75,6 @@ for i in range(len(a)):
 # list comprehension
 c = [a[i] * b[i] for i in range(len(a))]
 ```
-
-In entrambi i casi, nonostante l'operazione avvenga correttamente, i cicli
 
 Il risultato dell'operazione sarà in entrambi i casi *corretto*. Tuttavia, i cicli sono computazionalmente *costosi*: ciò significa che, specialmente all'aumentare del numero di elementi contenuti nei vettori, sarà necessario pagare un costo crescente.
 

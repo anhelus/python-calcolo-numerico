@@ -96,7 +96,7 @@ ax.plot(x, y_1, label='Retta')
 ax.plot(x, y_2, label='Funzione sinusoidale')
 ```
 
-Notiamo che abbiamo impostato un parametro `label` che indica l'etichetta assegnata ai due plot; questa sarà utilizzata più tardi per generare la legenda. Passiamo adesso ad impostare il titolo e le label sugli assi $x$ ed $y$ usando rispettivamente le funzioni `set_title`, `set_xlabel` e `set_ylabel`:
+Notiamo che abbiamo impostato un parametro `label` che indica l'etichetta assegnata ai due plot; questa sarà utilizzata più tardi per generare la legenda. Passiamo adesso ad impostare il titolo e le label sugli assi $x$ e $y$ usando rispettivamente le funzioni `set_title()`, `set_xlabel()` e `set_ylabel()`:
 
 ```py
 ax.set_title('Plot di due funzioni matematiche')
@@ -161,7 +161,7 @@ Il risultato sarà simile a quello mostrato in figura:
 
 ### 8.4.3: Rappresentazione di un istogramma
 
-Abbiamo già parlato degli istogrammi in precedenza. Tuttavia, la loro vera potenza sta nella rappresentazione visiva che offrono, ed in tal senso Matplotlib ci viene in soccorso offrendoci la funzione `hist`.
+Abbiamo già parlato degli istogrammi in precedenza. Tuttavia, la loro vera potenza sta nella rappresentazione visiva che offrono, ed in tal senso Matplotlib ci viene in soccorso offrendoci la funzione `hist()`.
 
 Per prima cosa, creiamo un vettore di interi.
 
@@ -169,7 +169,7 @@ Per prima cosa, creiamo un vettore di interi.
 x = rng.integers(low=0, high=100, size=1000)
 ```
 
-Al solito, creiamo la nostra figura, ed usiamo la funzione `hist` passandogli il vettore `x` creato in precedenza ed il parametro `density`, che ci permetterà di normalizzare l'istogramma (ovvero, fare in modo tale che la sommatoria dei singoli bin sia esattamente pari ad 1).
+Al solito, creiamo la nostra figura, ed usiamo la funzione `hist()` passandogli il vettore `x` creato in precedenza e il parametro `density`, che ci permetterà di normalizzare l'istogramma (ovvero, fare in modo tale che la sommatoria dei singoli bin sia esattamente pari ad 1).
 
 ```py
 fig, ax = plt.subplots()

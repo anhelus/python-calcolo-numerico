@@ -10,7 +10,7 @@ Tuttavia, abbiamo omesso una delle librerie fondamentali di questo ecosistema, t
 
 La libreria SciPy presenta un [vastissimo insieme di algoritmi e funzioni matematiche](https://docs.scipy.org/doc/scipy/reference/) costruite a partire dagli oggetti definiti da NumPy.
 
-Al solito, la libreria va installata usando ad esempio `pip`:
+Al solito, la libreria va installata usando, ad esempio `pip`:
 
 ```sh
 pip install scipy
@@ -37,7 +37,12 @@ x_1 = np.linspace(norm.ppf(0.01), norm.ppf(0.99), 100)
 x_2 = np.linspace(uniform.ppf(0.01), uniform.ppf(0.99), 100)
 ```
 
-Stiamo usando la funzione `linspace` per generare dei campioni equidistanziati e compresi tra `dist.ppf(0.01)` e `dist.ppf(0.99)`, dove `dist` può essere `norm` o `uniform`, rispettivamente, mentre `ppf(0.01)` rappresenta l'1-percentile della distribuzione (ed analogamente `ppf(0.99)` rappresenta il 99-percentile). In parole povere, stiamo generando cento campioni equidistanziati tra l'1-percentile ed il 99-percentile della distribuzione `dist`.
+Stiamo usando la funzione `linspace()` per generare dei campioni equidistanti
+tra loro, compresi tra `dist.ppf(0.01)` e `dist.ppf(0.99)`. L'oggetto `dist`
+può essere sia `norm` che `uniform`, mentre `ppf(0.01)` rappresenta
+l'1-percentile della distribuzione (e, analogamente, `ppf(0.99)` rappresenta il
+99-percentile). In parole povere, stiamo generando cento campioni equidistanti
+tra l'1-percentile ed il 99-percentile della distribuzione `dist`.
 
 Successivamente, utilizziamo la funzione `rvs()` per generare casualmente un "gran" numero di valori che però siano distribuiti secondo le due distribuzioni considerate:
 
@@ -90,6 +95,16 @@ Filtriamo questo segnale usando un filtro di Savitzky-Golay con finestra di lung
 from scipy.signal import savgol_filter
 
 filtered = savgol_filter(noisy, 7, 2)
+```
+
+Creiamo il plot:
+
+```python
+plt.plot(np.arange(100), noisy, alpha=0.5, label='Segnale originale')
+plt.plot(np.arange(100), filtered, label='Segnale filtrato')
+plt.grid()
+plt.legend()
+plt.show()
 ```
 
 Otterremo un risultato simile a quello mostrato in figura:

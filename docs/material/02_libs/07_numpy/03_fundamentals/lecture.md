@@ -27,7 +27,7 @@ array([3., 2.])
 !!!note "Moltiplicazione e divisione"
 	Per comprendere appieno il comportamento degli operatori * e /, dovremo parlare del broadcasting. Lo faremo in una delle prossime lezioni.
 
-## 7.3.2 - La funzione `sum`
+## 7.3.2 - La funzione `sum()`
 
 La funzione `sum(axis=None)` ci permette di sommare tutti gli elementi di un array lungo l'asse specificato.
 
@@ -78,10 +78,10 @@ Mediante la funzione `sort()` è possibile ordinare gli elementi di un array. Ad
 array([1, 2, 3, 4, 5, 6, 7, 8])
 ```
 
-L'ordine avviene maniera *ascendente* (ovvero dall'elemento più piccolo al più grande). In caso di array n-dimensionale, possiamo anche specificare l'asse lungo il quale avviene l'ordinamento, specificando il parametro axis. Ad esempio:
+L'ordine avviene maniera *ascendente* (ovvero dall'elemento più piccolo al più grande). In caso di array $n$-dimensionale, possiamo anche specificare l'asse lungo il quale avviene l'ordinamento, specificando il parametro axis. Ad esempio:
 
 ```py
->>> mat = np.array([[2,3,1], [4,2,6], [7,5,1]])
+>>> mat = np.array([[2, 3, 1], [4, 2, 6], [7, 5, 1]])
 >>> mat
 array([[2, 3, 1],
        [4, 2, 6],
@@ -178,7 +178,6 @@ Ad esempio, immaginiamo di voler rimuovere il primo elemento di un vettore:
 >>> arr = np.array([1, 2, 3, 4])
 >>> np.delete(arr, 0)
 array([2, 3, 4])
->>> arr
 ```
 
 La funzione può essere anche applicata su più indici usando una sequenza:
@@ -210,7 +209,7 @@ La funzione `delete()` può essere usata anche su array multidimensionali. In qu
 Ad esempio, se vogliamo rimuovere la prima riga dal seguente array, dobbiamo dare il valore `0` al parametro `axis`:
 
 ```py
->>> mat = np.array([[1,2,3], [4,5,6], [7,8,9]])
+>>> mat = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 >>> np.delete(mat, 0, 0)
 array([[4, 5, 6],
        [7, 8, 9]])
@@ -236,11 +235,11 @@ In altre parole, non specificando un valore per `axis`, rimuoveremmo il primo el
 
 !!!tip "Rimozione mediante maschere booleane"
 	Spesso è preferibile usare, al posto della notazione precedente, una maschera booleana:
-	> ```py
-	  >>> mask = [False, False, True, True]
-	  >>> arr[mask]
-	  array([3, 4])
-	  ```
+    > ```py
+      >>> mask = np.array([[True, False, True], [False, False, True], [False, True, True]])
+      >>> mtrx[mask]
+      array([1, 3, 6, 8, 9])
+      ```
 
 ### 7.3.6.2 - La funzione `insert()`
 
@@ -316,7 +315,7 @@ array([[ 1,  2,  3, 10],
 
 ## 7.3.7 - Dimensioni e forma di un array
 
-Esistono diverse proprietà di un array che ne descrivono dimensioni e forma. 
+Esistono diverse proprietà di un array che ne descrivono dimensioni e forma.
 
 Tornando alla nostra matrice `mat`, possiamo conoscere il numero di assi mediante l'attributo `ndarray.ndim`:
 
@@ -346,10 +345,10 @@ Possiamo modificare le dimensioni di un array mediante la funzione `reshape(arr,
 * `arr`: l'array di cui modificare le dimensioni;
 * `new_shape`: le nuove dimensioni dell'array.
 
-Se volessimo modificare le dimensioni di una matrice da $4 \times 4$ a $2 \times 8$, potremmo usare la funzione `reshape` come segue:
+Se volessimo modificare le dimensioni di una matrice da $4 \times 4$ a $2 \times 8$, potremmo usare la funzione `reshape()` come segue:
 
 ```py
->>> mat = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
+>>> mat = np.array([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]])
 >>> np.reshape(mat, (2, 8))
 array([[ 1,  2,  3,  4,  5,  6,  7,  8],
        [ 9, 10, 11, 12, 13, 14, 15, 16]])
@@ -360,20 +359,20 @@ array([[ 1,  2,  3,  4,  5,  6,  7,  8],
     > ```py
       >>> mat.reshape((2, 8))
       array([[ 1,  2,  3,  4,  5,  6,  7,  8],
-          [ 9, 10, 11, 12, 13, 14, 15, 16]])
+             [ 9, 10, 11, 12, 13, 14, 15, 16]])
       ```
-    Ciò significa che la funzione `reshape` è sia disponibile nella libreria NumPy, sia come metodo sugli oggetti di classe `ndarray`.
+    Ciò significa che la funzione `reshape()` è sia disponibile nella libreria NumPy, sia come metodo sugli oggetti di classe `ndarray`.
 
 !!!warning "Attenzione"
     Le nuove dimensioni dell'array devono essere coerenti con quelle dell'array di partenza!
 
 ## 7.3.9 - Flattening di un array
 
-Abbiamo già visto in precedenza la *vettorizzazione* di un array, effettuata in automatico in alcune situazioni (come ad esempio la chiamata di `delete` o `insert` senza specificare il parametro `axis`). Tuttavia, possiamo usare la funzione `flatten()` per effettuare manualmente questa operazione:
+Abbiamo già visto in precedenza la *vettorizzazione* di un array, effettuata in automatico in alcune situazioni (come ad esempio la chiamata di `delete()` o `insert()` senza specificare il parametro `axis`). Tuttavia, possiamo usare la funzione `flatten()` per effettuare manualmente questa operazione:
 
 ```py
 >>> mat.flatten()
-array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16])
 ```
 
 !!!tip "La funzione `ravel()`"

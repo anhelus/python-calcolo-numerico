@@ -18,7 +18,7 @@ def somma_polinomi(pol_1, pol_2):
 
 somma_polinomi([0, 1, 2], [2, 2, 1])
 somma_polinomi([1, 2], [2, 2, 1])    
-somma_polinomi([1, 2], [2, 2, 2, 1]) 
+somma_polinomi([1, 2], [2, 2, 2, 1])
 ```
 
 ## Esercizio E7.5.2
@@ -33,7 +33,7 @@ def calcola_media(array, pesi=[]):
         return sum(array) / len(array)
     else:
         if len(pesi) == len(array):
-            return sum([(pesi[i] * array[i]) for i in range(len(array))])
+            return sum([(pesi[i] * array[i]) for i in range(len(array))]) / sum(pesi)
     raise ValueError('La lunghezza dei pesi non corrisponde a quella degli array.')
 
 calcola_media([5, 4, 5])
@@ -41,15 +41,18 @@ calcola_media([5, 4, 5], [0, 1, 0])
 calcola_media([5, 4, 5], [0, 1])
 ```
 
-3. Scriviamo la funzione `descrivi(array)` che permette di descrivere un array in termini non parametrici, individuando mediana, deviazione standard e range interquartile (ovvero tra il 25-percentile ed il 75-percentile).
+## Esercizio E7.5.3
+
+Scriviamo la funzione `descrivi(array)` che permette di descrivere un array in termini non parametrici, individuando mediana, deviazione standard e range interquartile (ovvero tra il 25-percentile ed il 75-percentile).
+
+### Soluzione S7.5.2
 
 ```py
 def descrivi(array):
     return (
         np.median(array),
         np.std(array),
-        np.percentile(array, 25),
-        np.percentile(array, 75)
+        np.percentile(array, 25) - np.percentile(array, 75)
     )
 
 descrivi(np.array([3, 5, 3, 2, 1, 8]))

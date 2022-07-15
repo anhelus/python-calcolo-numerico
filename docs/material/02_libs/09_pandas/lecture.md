@@ -1,8 +1,8 @@
-# 9. Introduzione a Pandas
+# 9 - Introduzione a Pandas
 
 Pandas è una delle librerie più importanti dell'ecosistema SciPy, e viene usata per la lettura ed elaborazione dei dati provenienti da sorgenti di vario tipo, come ad esempio file CSV o Excel, ma anche file di testo e database. Vediamo quindi brevemente come usare la libreria, tenendo presente che ne approfondiremo il funzionamento anche durante le lezioni successive.
 
-## 9.1 Installazione e configurazione di Pandas
+## 9.1 - Installazione e configurazione di Pandas
 
 Al solito, provvediamo ad installare Pandas:
 
@@ -76,10 +76,10 @@ Embarked        object
 dtype: object
 ```
 
-Notiamo subito la presenza di tre tipi di colonna, ovvero `int64`, `float64` ed `object`. Laddove i primi due sono autoesplicativi, merita una particolare menzione il tipo `object`, che viene associato automaticamente a tutte le stringhe.
+Notiamo subito la presenza di tre tipi di colonna, ovvero `int64`, `float64` e `object`. Laddove i primi due sono autoesplicativi, merita una particolare menzione il tipo `object`, che viene associato automaticamente a tutte le stringhe.
 
 !!!tip "Suggerimento"
-	Normalmente, usare il tipo `object` comporta diversi problemi nella successiva fase di analisi dei dati. Potrebbe quindi essere una buona idea parametrizzare la funzione `read_csv` mediante il parametro [`dtype`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html), che accetta un dizionario che specifica il tipo di una o più colonne. Ad esempio, se volessimo specificare che i nomi sono delle stringhe, potremmo usare il tipo `string`:
+	Normalmente, usare il tipo `object` comporta diversi problemi nella successiva fase di analisi dei dati. Potrebbe quindi essere una buona idea parametrizzare la funzione `read_csv()` mediante il parametro [`dtype`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html), che accetta un dizionario che specifica il tipo di una o più colonne. Ad esempio, se volessimo specificare che i nomi sono delle stringhe, potremmo usare il tipo `string`:
 
 	> ```py
 	  >>> types = {'Name': 'string'}
@@ -114,9 +114,7 @@ Name: Name, dtype: object
 Possiamo accedere ad un singolo elemento di una serie mediante una classica procedura di indicizzazione. Notiamo infatti come ogni campione all'interno della serie sia associato ad un indice numerico crescente il cui valore iniziale è pari a 0; pertanto, possiamo accedere all'$i$-mo elemento della serie richiamando l'$i-1$-mo indice, esattamente come accade per le liste o le sequenze.
 
 ```py
-names[0]
-
-# Output restituito
+>>> names[0]
 'Braund, Mr. Owen Harris'
 ```
 
@@ -128,27 +126,21 @@ names[0]
 L'accesso agli elementi del dataframe può avvenire attraverso diverse modalità. In primo luogo, possiamo accedere allo specifico valore di una feature di un dato campione mediante il *chained indexing*:
 
 ```py
-df['Age'][1]
-
-# Output restituito
+>>> df['Age'][1
 38
 ```
 
 In alternativa, è possibile usare la funzione `loc(row_idx, col)`, che permette di accedere al valore assunto dalla feature `col` per l'elemento in posizione `row_idx`:
 
 ```py
-df.loc[1, ('Age')]
-
-# Output restituito
+>>> df.loc[1, ('Age')]
 38.0
 ```
 
 La funzione `loc()` può operare anche su delle slice di dati:
 
 ```py
-df.loc[1:5, ('Age')]
-
-# Output restituito
+>>> df.loc[1:5, ('Age')]
 1    38.0
 2    26.0
 3    35.0
@@ -159,9 +151,7 @@ df.loc[1:5, ('Age')]
 o su insiemi di feature:
 
 ```py
-df.loc[1:5, ('Age', 'Sex')]
-
-# Output restituito
+>>> df.loc[1:5, ('Age', 'Sex')]
    Age     Sex
 1  38.0  female
 2  26.0  female
@@ -182,27 +172,23 @@ Notiamo che, come al solito, le funzioni lavorano sul valore, e non sulla refere
 df.set_index('Ticket', inplace=True)
 ```
 
-In alternativa, possiamo decidere di impostare l'indice direttamente nel metodo `read_csv` impostando il parametro `index_col`:
+In alternativa, possiamo decidere di impostare l'indice direttamente nel metodo `read_csv()` impostando il parametro `index_col`:
 
 ```py
 df = pd.read_csv('titanic.csv', index_col='Ticket')
 ```
 
-In questo caso, la funzione `loc` dovrà essere utilizzata usando come parametri di lettura per righe i nuovi indici. Ad esempio:
+In questo caso, la funzione `loc()` dovrà essere utilizzata usando come parametri di lettura per righe i nuovi indici. Ad esempio:
 
 ```py
-df.loc['STON/O2. 3101282', 'Name']
-
-# Output restituito
+>>> df.loc['STON/O2. 3101282', 'Name']
 'Heikkinen, Miss. Laina'
 ```
 
 Oltre alla funzione `loc()` Pandas ci mette a disposizione la funzione `iloc()`, la quale ci offre la possibilità di selezionare un sottoinsieme di campion del dataframe mediante indici interi (da cui la `i`):
 
 ```py
-df.iloc[2:5, 2:4]
-
-# Output restituito
+>>> df.iloc[2:5, 2:4]
                   Pclass                                          Name
 Ticket                                                                
 STON/O2. 3101282       3                        Heikkinen, Miss. Laina
@@ -215,9 +201,8 @@ STON/O2. 3101282       3                        Heikkinen, Miss. Laina
 Supponiamo di voler selezionare soltanto gli uomini maggiorenni presenti nel dataset del Titanic. Per farlo, possiamo usare un'istruzione che implementi delle logiche di tipo booleano:
 
 ```py
-men = df[(df['Age'] > 18) & (df['Sex'] == 'male')] 
-
-men.head()
+>>> men = df[(df['Age'] > 18) & (df['Sex'] == 'male')]
+>>> men.head()
     PassengerId  Survived  Pclass                            Name   Sex   Age
 0             1         0       3         Braund, Mr. Owen Harris  male  22.0   
 4             5         0       3        Allen, Mr. William Henry  male  35.0   
@@ -226,7 +211,7 @@ men.head()
 13           14         0       3     Andersson, Mr. Anders Johan  male  39.0   
 ```
 
-Nella pratica, stiamo filtrando il dataset in base all'AND logico tra due condizioni:
+Nella pratica, stiamo filtrando il dataset in base all'`AND` logico tra due condizioni:
 
 * `df['Age'] > 18`: questa condizione genera una *maschera booleana* che è `True` soltanto se l'età per quel passeggero è maggiore di 18 anni;
 * `df['Sex'] == 'male'`: questa condizione genera una maschera booleana che è vera soltanto se il genere del passeggero è maschile.
@@ -264,7 +249,7 @@ df = pd.read_excel('dati.xlsx')
 ```
 
 !!!warning "Attenzione"
-	Per leggere (e scrivere) da (su) Excel è necessario installare la libreria `openpyxl` (`pip install openpyxl`). 
+	Per leggere (e scrivere) da (su) Excel è necessario installare la libreria `openpyxl` (`pip install openpyxl`).
 
 In alternativa, può essere letto un file in formato JSON, oppure ancora direttamente un database:
 
@@ -288,9 +273,7 @@ df.to_csv('train.xlsx')
 Immaginiamo adesso di voler aggiungere una nuova feature ad un dataframe già esistente. Per farlo, iniziamo creando un dataframe da zero:
 
 ```py
-df = pd.DataFrame([1,2,3,4,5], columns=['one'])     
-
-# Output restituito
+>>> df = pd.DataFrame([1,2,3,4,5], columns=['one'])
    one
 0    1
 1    2
@@ -302,9 +285,7 @@ df = pd.DataFrame([1,2,3,4,5], columns=['one'])
 Possiamo aggiungere una nuova colonna semplicemente usando l'operatore di assegnazione e specificandone il nome:
 
 ```py
-df['two'] = df['one'] * 2
-
-# Output restituito
+>>> df['two'] = df['one'] * 2
    one  two
 0    1    2
 1    2    4
@@ -316,9 +297,8 @@ df['two'] = df['one'] * 2
 Possiamo poi inserire nuovi campioni in coda al dataframe. Per farlo, dovremo prima creare un nuovo dataframe dalle dimensioni coerenti con quello già esistente, e poi usare la funzione `concat()`:
 
 ```py
-df_add = pd.DataFrame([[6,7]], columns=['one', 'two']) 
-df = pd.concat([df, df_add])
-
+>>> df_add = pd.DataFrame([[6,7]], columns=['one', 'two'])
+>>> df = pd.concat([df, df_add])
    one  two
 0    1    2
 1    2    4
@@ -331,9 +311,7 @@ df = pd.concat([df, df_add])
 Notiamo che la funzione `concat()` accetta, tra gli altri, il parametro `axis`. Se questo è uguale a zero (come lo è di default), la `concat()` effettua la concatenazione per righe; se è pari ad 1, invece, la concatenazione avviene per colonne. Tuttavia, è importante sottolineare come la concatenazione avvenga anche nel caso le misure non siano completamente coerenti: infatti, se provassimo ad effettuare una concatenazione per colonne, avremmo un risultato del tipo:
 
 ```py
-pd.concat([df, df_add], axis=1)
-
-# Output restituito
+>>> pd.concat([df, df_add], axis=1)
    one  two  one  two
 0    1    2  6.0  7.0
 1    2    4  NaN  NaN

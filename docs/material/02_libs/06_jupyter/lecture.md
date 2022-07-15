@@ -6,7 +6,7 @@ Per ovviare a queste problematiche, all'interno del framework SciPy viene propos
 
 ## 6.1 - Anatomia di un notebook
 
-Un notebook è, in poche parole, un *ambiente interattivo* che permette di *scrivere* e *testare* il nostro codice. In particolare, ptoremo scrivere una o più istruzioni, ed eseguirle in maniera separata dalle altre mediante il meccanismo delle *celle*, che altro non sono se non dei singoli "blocchi" di codice. 
+Un notebook è, in poche parole, un *ambiente interattivo* che permette di *scrivere* e *testare* il nostro codice. In particolare, ptoremo scrivere una o più istruzioni, ed eseguirle in maniera separata dalle altre mediante il meccanismo delle *celle*, che altro non sono se non dei singoli "blocchi" di codice.
 
 !!!tip "Suggerimento"
 	I notebook Jupyter ci permettono di inserire anche commenti, descrizioni ed equazioni utilizzando due linguaggi di markup molto noti, ovvero [Markdown](https://daringfireball.net/projects/markdown/) e [Latex](https://www.latex-project.org/).
@@ -52,7 +52,7 @@ def somma(a, b):
 	return somma
 ```
 
-Per eseguire il codice all'interno della cella, premiamo il tasto `Play`, oppure la combinazione di tasti `Shift+Invio`. Una volta eseguita la prima cella, Jupyter ne creerà in automatico un'altra; al suo interno, potremo scrivere le istruzioni necessarie a chiamare la funzione `somma` su due diversi valori.
+Per eseguire il codice all'interno della cella, premiamo il tasto `Play`, oppure la combinazione di tasti `Shift+Invio`. Una volta eseguita la prima cella, Jupyter ne creerà in automatico un'altra; al suo interno, potremo scrivere le istruzioni necessarie a chiamare la funzione `somma()` su due diversi valori.
 
 ```py
 somma(5, 7)
@@ -71,4 +71,4 @@ Jupyter ci permette di effettuare una serie di operazioni utili, tra cui:
 
 Soffermiamoci per un attimo sulle ultime due operazioni. Può capitare, infatti, che ci sia la necessità di interrompere il flusso attuale dell'esecuzione delle istruzioni, oppure ancora che sia necessario riavviare il notebook. Dato che Jupyter si basa sul concetto di *kernel*, il quale è il responsabile per l'esecuzione del notebook, diremo in gergo che possiamo *interrompere*, o *stoppare*, il kernel, oppure ancora che possiamo *riavviarlo*.
 
-L'interruzione del kernel si limita a fermare l'esecuzione della cella attuale: ciò non comporta alcuna perdita di dati, e potremo riprendere ad eseguire il codice nel notebook in ogni momento, sia dall'inizio di quella cella, sia dall'interno di un'altra. Il riavvio del kernel, invece, "blocca" completamente l'esecuzione, andando a cancellare anche le variabili presenti in memoria: si tratta, quindi, di un vero e proprio "reset", da utilizzare quando, ad esempio, abbiamo la necessità di riorganizzare il codice, oppure quando abbiamo effettuato un numero eccessivo di modifiche per il quale i risultati iniziano a non essere coerenti con le nostre attese.
+L'interruzione del kernel si limita a fermare l'esecuzione della cella attuale: ciò non comporta alcuna perdita di dati, e potremo riprendere ad eseguire il codice nel notebook in ogni momento, sia dall'inizio di quella cella, sia dall'interno di un'altra. Il riavvio del kernel, invece, "blocca" completamente l'esecuzione, andando a cancellare anche le variabili presenti in memoria: si tratta, quindi, di un vero e proprio "reset", da utilizzare quando, ad esempio, abbiamo la necessità di riorganizzare il codice, oppure quando abbiamo effettuato un numero eccessivo di modifiche per le quali i risultati iniziano a non essere coerenti con le nostre attese.

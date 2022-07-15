@@ -43,7 +43,7 @@ In precedenza si è accennato al fatto che gli array, a differenza delle liste, 
 array([1., 1.])
 ```
 
-Notiamo subito che è stata effettuata in maniera implicita ed automatica un'operazione di conversione di tipo, e tutti i valori passati sono stati convertiti in formato float. 
+Notiamo subito che è stata effettuata in maniera implicita ed automatica un'operazione di conversione di tipo, e tutti i valori passati sono stati convertiti in formato float.
 
 Interessante è anche valutare cosa accade se proviamo a passare una lista contenente un numero ed una stringa:
 
@@ -65,7 +65,7 @@ Gli array NumPy hanno dimensione prefissata, e sono quindi in grado di contenere
 Creiamo ad esempio un array che rappresenti una matrice $2 \times 3$, ovvero a due righe e tre colonne:
 
 ```py
->>> a = np.array([[1,2,3],[4,5,6]])
+>>> a = np.array([[1, 2, 3], [4, 5, 6]])
 >>> a
 array([[1, 2, 3],
        [4, 5, 6]])
@@ -85,7 +85,7 @@ Come ci aspettavamo, il nostro array ha cardinalità due sulla prima dimensione 
 Oltre al metodo visto in precedenza, possiamo creare un array utilizzando direttamente il costruttore della classe `ndarray`:
 
 ```py
->>> a = np.ndarray([3,3])       # oppure a = np.ndarray(shape=(3,3))
+>>> a = np.ndarray([3, 3])       # oppure a = np.ndarray(shape=(3, 3))
 >>> a
 array([[0.00000000e+000, 0.00000000e+000, 0.00000000e+000],
        [0.00000000e+000, 0.00000000e+000, 3.02368175e-321],
@@ -104,7 +104,7 @@ Oltre a questa tecnica base, esistono diversi modi per creare array di un certo 
 Possiamo creare un array di dimensioni arbitrarie in cui tutti gli elementi sono pari ad 1. Per farlo, usiamo la funzione `ones()`:
 
 ```py
->>> u = np.ones(shape=(3,3))
+>>> u = np.ones(shape=(3, 3))
 >>> u
 array([[1., 1., 1.],
        [1., 1., 1.],
@@ -114,7 +114,7 @@ array([[1., 1., 1.],
 In modo simile, possiamo creare array di dimensioni arbitrarie in cui tutti gli elementi sono pari a zero mediante la funzione `zeros()`:
 
 ```py
->>> z = np.zeros(shape=(3,3))
+>>> z = np.zeros(shape=(3, 3))
 >>> z
 array([[0., 0., 0.],
        [0., 0., 0.],
@@ -126,7 +126,7 @@ array([[0., 0., 0.],
 Possiamo creare un array vuoto mediante la funzione `empty()`:
 
 ```py
->>> e = np.empty(shape=(3,3))
+>>> e = np.empty(shape=(3, 3))
 >>> e
 array([[0.00000000e+000, 0.00000000e+000, 0.00000000e+000],
        [0.00000000e+000, 0.00000000e+000, 1.67982320e-321],
@@ -136,7 +136,7 @@ array([[0.00000000e+000, 0.00000000e+000, 0.00000000e+000],
 Questa funzione può risultare utile quando vogliamo preallocare spazio per un array.
 
 !!!note "Nota"
-    I più attenti avranno notato che, in realtà, l'array generato da `empty()` non è vuoto, ma contiene valori casuali. In tal senso, dà risultati equivalenti all'uso diretto del costruttore `ndarray`.
+    I più attenti avranno notato che, in realtà, l'array generato da `empty()` non è vuoto, ma contiene valori casuali. In tal senso, dà risultati equivalenti all'uso diretto del costruttore `ndarray()`.
 
 ### 7.2.3.4 - Matrice identità
 
@@ -150,7 +150,7 @@ array([[1., 0., 0.],
        [0., 0., 1.]])
 ```
 
-!!!warning "Attenzione" 
+!!!warning "Attenzione"
     In questo caso, notiamo come non si possa passare una tupla o una lista per indicare le dimensioni dell'array. Tuttavia, possiamo specificare sia il numero delle righe (con il primo parametro) che il numero delle colonne (con il secondo parametro).
 
 ### 7.2.3.5 - Matrici diagonali
@@ -176,7 +176,7 @@ array([[5, 0, 0],
 Vediamo invece come affrontare il problema duale. Immaginiamo di avere quindi un array, e volerne estrarre la diagonale:
 
 ```py
->>> x
+>>> x = np.array([[5, 5, 5], [2, 1, 3], [4, 3, 6]])
 >>> x
 array([[5, 2, 2],
        [2, 1, 3],
@@ -237,17 +237,17 @@ Così come per le liste, il modo più immediato per accedere al valore di un ele
 Nel caso di array ad $n$ dimensioni, è necessario indicare l'indice per ciascuna delle dimensioni dell'array. Ad esempio, per un array bidimensionale potremmo selezionare l'elemento alla prima riga e prima colonna con una sintassi di questo tipo:
 
 ```py
->>> b = np.array([[1,2], [3,4]])
+>>> b = np.array([[1, 2], [3, 4]])
 >>> b[0][0]
 1
 ```
 
 ## 7.2.5 - Maschere booleane
 
-Possiamo accedere ad un sottoinsieme di elementi dell'array mediante una "maschera", ovvero un altro array, di dimensioni uguali a quelle di partenza, al cui interno sono presenti esclusivamente dei valori booleani. Così facendo, estrarremo soltanto gli elementi la cui corrispondente posizione all'interno della mascher ha valore `True`. Ad esempio, possiamo selezionare tutti gli elementi appartenenti alla prima colonna dell'array `b`:
+Possiamo accedere ad un sottoinsieme di elementi dell'array mediante una "maschera", ovvero un altro array, di dimensioni uguali a quelle di partenza, al cui interno sono presenti esclusivamente dei valori booleani. Così facendo, estrarremo soltanto gli elementi la cui corrispondente posizione all'interno della maschera ha valore `True`. Ad esempio, possiamo selezionare tutti gli elementi appartenenti alla prima colonna dell'array `b`:
 
 ```py
->>> mask = ([True, False], [True, False])
+>>> mask = np.array([[True, False], [True, False]])
 >>> b[mask]
 array([1, 3])
 ```
@@ -284,12 +284,12 @@ array([2, 3])
 Così come le liste, anche gli array consentono le operazioni di slicing:
 
 ```py
->>> a = np.array([1,2,3,4])
+>>> a = np.array([1, 2, 3, 4])
 >>> a[0:2]
 array([1, 2])
 ```
 
-Per gli array multidimensionali, lo slicing si intende sulla $n$-ma dimensione dell'array. Questo concetto è facile da comprendere se si visualizza l'array ad n-dimensioni come un array di array:
+Per gli array multidimensionali, lo slicing si intende sulla $n$-ma dimensione dell'array. Questo concetto è facile da comprendere se si visualizza l'array ad $n$-dimensioni come un array di array:
 
 ```py
 >>> b
@@ -324,11 +324,14 @@ La funzione `nonzero()` restituisce una tupla con gli indici per riga e colonna 
 
 !!!tip "Ottenere una lista di tuple"
 	Possiamo ottenere una lista di tuple rappresentative delle coppie di indici per gli elementi non nulli sfruttando la funzione `zip`:
-		> ```py
-		>>> coords = list(zip(s[0], s[1]))
-		>>> coords
-		[(0, 0), (1, 1), (2, 0), (2, 1)]
-	```
+    > ```py
+    >>> s = np.nonzero(tarry)
+    >>> s
+    (array([0, 1, 2, 2], dtype=int64), array([0, 1, 0, 1], dtype=int64))
+    >>> coords = list(zip(s[0], s[1]))
+    >>> coords
+    [(0, 0), (1, 1), (2, 0), (2, 1)]
+    ```
 
 ## 7.2.7 - Fancy indexing
 
@@ -337,7 +340,7 @@ Chiudiamo questa lezione parlando di una tecnica molto interessante chiamata *fa
 ```py
 >>> rand = np.random.RandomState(42)
 >>> x = rand.randint(100, size=10)
->>> indexes = np.array([[1,4],[5,2]])
+>>> indexes = np.array([[1, 4],[5, 2]])
 >>> x
 array([51, 92, 14, 71, 60, 20, 82, 86, 74, 74])
 >>> x[indexes]
@@ -347,7 +350,7 @@ array([[92, 60],
 
 Nel codice precedente, stiamo:
 
-1. usando la funzione `randint` per generare un array di numeri interi casuali compresi tra 0 e 100;
+1. usando la funzione `randint()` per generare un array di numeri interi casuali compresi tra 0 e 100;
 2. generando un array bidimensionale `indexes`;
 3. restituendo, mediante il fancy indexing, un array con le dimensioni di `indexes` e gli elementi di `x` presi nelle posizioni indicate da `indexes`.
 
